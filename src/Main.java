@@ -95,8 +95,9 @@ record Folder(ArrayList<String> files) {
 
     static ArrayList<String> readFiles(String path) {
         File folder = new File(path);
-        if (!folder.exists()) folder.mkdir();
-        File[] folderContents = new File(path).listFiles();
+        if (!folder.exists()) //noinspection ResultOfMethodCallIgnored
+            folder.mkdir();
+        File[] folderContents = folder.listFiles();
         ArrayList<String> files = new ArrayList<>();
         assert folderContents != null;
         for (File f : folderContents) {
