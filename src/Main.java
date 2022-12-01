@@ -1,5 +1,6 @@
 import java.io.File;
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Main {
@@ -43,22 +44,32 @@ class App {
     }
 
     int userInput() {
-        int input = scan.nextInt();
-        scan.nextLine();
-        return input;
+        try {
+            int input = scan.nextInt();
+            scan.nextLine();
+            return input;
+        } catch (InputMismatchException e) {
+            scan.nextLine();
+            return Integer.MIN_VALUE;
+        }
     }
 
     void executeChoice(int choice) {
         switch (choice) {
+            case (Integer.MIN_VALUE) -> inputMismatchError();
             case (1) -> showFiles();
             case (2) -> folderCommands();
             case (3) -> exit();
-            default -> errorMessage();
+            default -> incorrectChoiceError();
         }
     }
 
-    void errorMessage() {
-        System.out.println("Incorrect input");
+    void incorrectChoiceError() {
+        System.out.println("Incorrect choice");
+    }
+
+    void inputMismatchError() {
+        System.out.println("Please input an integer");
     }
 
     void showFiles() {
