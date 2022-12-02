@@ -202,7 +202,7 @@ record Folder(ArrayList<String> files) {
         }
         ArrayList<String> filesMatched = new ArrayList<>();
         for (String f : files)
-            if (f.matches(String.format("(.*)%s(.*)", query))) filesMatched.add(f);
+            if (f.contains(query)) filesMatched.add(f);
         if (filesMatched.isEmpty())
             System.out.println("no possible matches");
         else
