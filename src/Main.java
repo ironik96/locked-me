@@ -206,7 +206,7 @@ record Folder(ArrayList<String> files) {
         if (filesMatched.isEmpty())
             System.out.println("no possible matches");
         else
-            System.out.print("possible matches: " + filesMatched);
+            System.out.println("possible matches: " + filesMatched);
     }
 
     private void sortFiles() {
